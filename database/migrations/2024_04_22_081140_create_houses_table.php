@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-         
+            
+            // ways to define the foriegn keys : 
+            //1- $table->unsignedBigInteger('user_id');
+            //2- $table->foreign('user_id')
+            // ->references('id')
+            // ->on('users')
+            // ->onDelete('cascade');
+            $table->foreignId('user_id')
+            ->constrained('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
