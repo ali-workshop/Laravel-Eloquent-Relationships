@@ -12,7 +12,10 @@ class Group extends Model
 
     public function jobs():BelongsToMany
         {
-            return $this->BelongsToMany(Job::class);
+            return $this->BelongsToMany(Job::class)
+            ->using(GroupJob::class)
+            ->withPivot('active')
+            ->withTimestamps();
         
         }
 

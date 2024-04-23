@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('group_job', function (Blueprint $table) {
             $table->id();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }
