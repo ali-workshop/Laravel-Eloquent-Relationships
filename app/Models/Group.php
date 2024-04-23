@@ -10,7 +10,7 @@ class Group extends Model
 {
     use HasFactory;
 
-    public function Group():BelongsToMany
+    public function jobs():BelongsToMany
         {
             return $this->BelongsToMany(Job::class);
         
