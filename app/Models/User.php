@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -47,10 +48,14 @@ class User extends Authenticatable
     }
 
 
-    public function house():HasMany
-    {
-        return $this->hasMany(House::class);
-
+    public function house():HasOne
+    { 
+        // if we commit the convention the laravel elquent will do the magic but if we make any change wiht the local id or in the forien id we should use the second way 
+        // first way : return $this->hasOne(House::class);
+        
+    //   the name of the class which achieve the realtaiton,the forein key in that class, the local id in this class                          
+        // the second way below  
+    return $this->hasOne(House::class,'user_id','id');
 
     }
 
