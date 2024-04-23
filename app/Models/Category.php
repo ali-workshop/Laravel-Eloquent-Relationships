@@ -11,13 +11,12 @@ class Category extends Model
     use HasFactory;
 
 
-    protected $primaryKey='main_id';
-    public $incrementing=False ;
+
 
 
    public function products():HasMany
     {
-        return $this->hasMany(Products::class,'category_id','main_id');
+        return $this->hasMany(Products::class);
 
     }
 }
