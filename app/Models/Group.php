@@ -12,6 +12,7 @@ class Group extends Model
 
     public function jobs():BelongsToMany
         {
+            // the second parameter is the pivote table.
             return $this->BelongsToMany(Job::class,'group_job')
             ->using(GroupJob::class)
             ->withPivot('active')
